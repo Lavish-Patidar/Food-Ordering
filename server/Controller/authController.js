@@ -3,9 +3,9 @@ import { generateAuthToken } from "../utils/tokenUtils.js";
 import bcrypt from "bcryptjs";
 
 export const signup = async (req, res) => {
-    const { name, email, password, role, address } = req.body;
+    const { name, email, password, phone, role, address } = req.body;
     try {
-        if (!name || !email || !password || !address) {
+        if (!name || !email || !password || !phone || !address) {
             return res.status(400).json({ message: "Please fill all fields" });
         }
 
@@ -21,7 +21,8 @@ export const signup = async (req, res) => {
             email,
             password: hashedPassword,
             role,
-            address
+            address,
+            phone
         });
 
         if (newUser) {
