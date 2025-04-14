@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Eye, EyeOff } from 'lucide-react'
-import axiosInstance from '../../API/axiosInstance ';
+import { axiosInstance } from '../../API/axiosInstance ';
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
