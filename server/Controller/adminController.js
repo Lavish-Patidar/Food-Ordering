@@ -21,10 +21,17 @@ export const adminLogin = async (req, res) => {
         const token = jwt.sign(
             { email: admin.email, id: admin._id, role: "admin" },
             process.env.JWT_SECRET,
-            { expiresIn: "1h" }
+            { expiresIn: "30m" }
         );
 
-        res.status(200).json({ result: admin, token });
+        res.status(200).json({
+            admin: {
+                name: admin.name,
+                email: admin.email,
+                id: admin._id,
+                role: admin.role
+            }, token
+        });
     } catch (error) {
         res.status(500).json({ message: "Something went wrong" });
     }

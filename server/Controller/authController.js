@@ -28,7 +28,16 @@ export const signup = async (req, res) => {
         if (newUser) {
             await newUser.save();
             const token = await generateAuthToken(newUser, res);
-            res.status(201).json({ message: "User created successfully", newUser, token });
+            res.status(201).json({
+                message: "User created successfully", user: {
+                    name: newUser.name,
+                    email: newUser.email,
+                    role: newUser.role,
+                    address: newUser.address,
+                    phone: newUser.phone
+
+                }, token
+            });
 
 
         }
@@ -57,7 +66,16 @@ export const login = async (req, res) => {
         }
 
         const token = await generateAuthToken(user, res);
-        res.status(200).json({ user, token });
+        res.status(200).json({
+            user: {
+                name: newUser.name,
+                email: newUser.email,
+                role: newUser.role,
+                address: newUser.address,
+                phone: newUser.phone
+
+            }, token
+        });
     } catch (error) {
         console.log("Error in login controller", error.message);
         res.status(500).json({ message: "Internal Server Error" });

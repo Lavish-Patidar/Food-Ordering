@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Eye, EyeOff } from 'lucide-react'
-import axiosInstance from '../../API/axiosInstance ';
+import { axiosInstance } from '../../API/axiosInstance ';
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -50,7 +50,7 @@ const Login = () => {
             </div>
 
             {/* Right Side - Form */}
-            <div className="sm:w-full md:w-1/2 flex items-center justify-center p-8">
+            <div className="w-full md:w-1/2 flex items-center justify-center p-4 sm:p-6 md:p-8">
                 <div className="w-full max-w-md">
                     <h2 className="text-4xl   font-bold mb-1">Welcome Back</h2>
                     <h5 className="text-xl mb-10">Sign in to continue</h5>
